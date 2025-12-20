@@ -42,8 +42,8 @@ export default function ContactPage() {
                     20121 Milano, Italy
                 </p>
                 <div className="space-y-2">
-                    <a href="mailto:milano@casaitalia.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">milano@casaitalia.com</a>
-                    <a href="tel:+390212345678" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">+39 02 123 456 78</a>
+                    <a href="mailto:milano@casaitalia.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">mahoch1996@outlook.com</a>
+                    <a href="tel:+390212345678" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">86+15989611582</a>
                 </div>
             </div>
 
@@ -54,8 +54,8 @@ export default function ContactPage() {
                     Shanghai, China
                 </p>
                 <div className="space-y-2">
-                    <a href="mailto:shanghai@casaitalia.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">shanghai@casaitalia.com</a>
-                    <a href="tel:+862112345678" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">+86 21 1234 5678</a>
+                    <a href="mailto:mahoch1996@outlook.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">mahoch1996@outlook.com</a>
+                    <a href="tel:+8615989611582" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">86+15989611582</a>
                 </div>
             </div>
 

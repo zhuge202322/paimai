@@ -79,7 +79,7 @@ export default function AboutPage() {
             className="absolute inset-0 z-0"
         >
             <Image 
-                src="/images/01.png" // Using the grand opening image for impact
+                src="/images/about/002.png" // Using the grand opening image for impact
                 alt="Studio Atmosphere"
                 fill
                 className="object-contain md:object-cover"
