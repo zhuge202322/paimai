@@ -229,6 +229,7 @@ function ProductContent({ product, relatedProducts }: { product: ProductData, re
                                 >
                                     <div className="aspect-[3/4] relative overflow-hidden bg-stone-200 mb-4">
                                         <Image
+                                            src={p.image}
                                             alt={p.name}
                                             fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
