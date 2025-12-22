@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     default: "HC Furniture Supply | Luxury Furniture",
     template: "%s | HC Furniture Supply"
   },
-  description: "Minimalist Italian Design Furniture. Curated collections of luxury handcrafted pieces.",
-  keywords: ["Italian Furniture", "Luxury Design", "Minimalist Interior", "Milan Atelier", "HC Furniture Supply", "Furniture", "Design"],
+  description: "HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.",
+  keywords: ["Custom Furniture", "Luxury Hotel Furniture", "Modern Office Furniture", "Residential Projects", "HC Furniture Supply", "China Furniture Supply", "Global Supply Chain"],
   authors: [{ name: "HC Furniture Supply" }],
   openGraph: {
     title: "HC Furniture Supply | Luxury Furniture",
-    description: "Minimalist Italian Design Furniture",
+    description: "HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.",
     url: "/",
     siteName: "HC Furniture Supply",
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "HC Furniture Supply | Luxury Furniture",
-    description: "Minimalist Italian Design Furniture",
+    description: "HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.",
     images: ["/images/og-image.jpg"],
   },
   icons: {
