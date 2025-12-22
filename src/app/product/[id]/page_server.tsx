@@ -54,7 +54,7 @@ export default async function ProductArticlePage({ params }: { params: { id: str
                         // Let's check api.ts later. For now default to General.
     collection: "Collection 2024", 
     image: productPost.featuredImage?.node?.sourceUrl || "/images/placeholder.png",
-    designer: "Casa Italia",
+    designer: "HC Furniture Supply",
     description: productPost.excerpt ? productPost.excerpt.replace(/<[^>]+>/g, '').trim() : "A masterpiece of design.",
     content: productPost.content // Pass full HTML content
   };
@@ -69,7 +69,7 @@ export default async function ProductArticlePage({ params }: { params: { id: str
         category: getCategory(p),
         collection: "The Collection",
         image: p.featuredImage?.node?.sourceUrl || "/images/placeholder.png",
-        designer: "Casa Italia",
+        designer: "HC Furniture Supply",
         description: "",
       };
     });

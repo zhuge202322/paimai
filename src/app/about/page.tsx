@@ -105,7 +105,7 @@ export default function AboutPage() {
                 </motion.h1>
                 <div className="w-12 h-0.5 bg-stone-900 mb-8" />
                 <p className="text-stone-600 leading-loose mb-6">
-                    Founded in the heart of the Brera Design District, Casa Italia began as a small workshop dedicated to restoring mid-century classics. This intimacy with the masters taught us that true luxury lies not in ornamentation, but in the honesty of materials and the purity of form.
+                    Founded in the heart of the Brera Design District, HC Furniture Supply began as a small workshop dedicated to restoring mid-century classics. This intimacy with the masters taught us that true luxury lies not in ornamentation, but in the honesty of materials and the purity of form.
                 </p>
                 <p className="text-stone-600 leading-loose">
                     Today, we collaborate with the world's most visionary designers to carry this legacy forward, blending traditional Italian craftsmanship with contemporary minimalism.
@@ -195,7 +195,7 @@ export default function AboutPage() {
             className="mx-auto mb-6 opacity-20"
          />
          <p className="text-[10px] tracking-widest uppercase text-stone-400">
-            © 2024 Casa Italia · Milan · Shanghai · New York
+            © 2024 HC Furniture Supply · Milan · Shanghai · New York
          </p>
       </footer>
 

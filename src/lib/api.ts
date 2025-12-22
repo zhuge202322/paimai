@@ -1,11 +1,11 @@
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL as string;
+const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || "http://45.145.229.20:2025/graphql";
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
   const headers = { 'Content-Type': 'application/json' };
 
-  if (!API_URL) {
-    throw new Error('NEXT_PUBLIC_WORDPRESS_API_URL is not defined in .env.local');
-  }
+  // if (!API_URL) {
+  //   throw new Error('NEXT_PUBLIC_WORDPRESS_API_URL is not defined in .env.local');
+  // }
 
   // 这里的 fetch 是 Next.js 内置的，支持服务端缓存和静态生成
   const res = await fetch(API_URL, {

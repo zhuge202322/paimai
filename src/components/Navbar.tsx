@@ -49,7 +49,7 @@ export function Navbar() {
       >
         <Link href="/">
             <span className="font-serif text-2xl md:text-3xl font-bold tracking-widest text-white uppercase cursor-pointer">
-            Casa Italia
+            HC Furniture Supply
             </span>
         </Link>
       </motion.div>

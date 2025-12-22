@@ -22,7 +22,7 @@ export async function generateMetadata(
 
   return {
     title: productPost.title,
-    description: productPost.excerpt ? productPost.excerpt.replace(/<[^>]+>/g, '').trim() : `Discover ${productPost.title} at Casa Italia.`,
+    description: productPost.excerpt ? productPost.excerpt.replace(/<[^>]+>/g, '').trim() : `Discover ${productPost.title} at HC Furniture Supply.`,
     openGraph: {
       title: productPost.title,
       description: productPost.excerpt ? productPost.excerpt.replace(/<[^>]+>/g, '').trim() : undefined,
@@ -85,7 +85,7 @@ export default async function ProductArticlePage({ params }: { params: Promise<{
     category: "General", 
     collection: "Collection 2024", 
     image: productPost.featuredImage?.node?.sourceUrl || "/images/placeholder.png",
-    designer: "Casa Italia",
+    designer: "HC Furniture Supply",
     description: productPost.excerpt ? productPost.excerpt.replace(/<[^>]+>/g, '').trim() : "A masterpiece of design.",
     content: productPost.content // Pass full HTML content
   };
@@ -100,7 +100,7 @@ export default async function ProductArticlePage({ params }: { params: Promise<{
         category: getCategory(p),
         collection: "The Collection",
         image: p.featuredImage?.node?.sourceUrl || "/images/placeholder.png",
-        designer: "Casa Italia",
+        designer: "HC Furniture Supply",
         description: "",
       };
     });

@@ -21,7 +21,7 @@ export default async function CollectionPage() {
       category: displayCategory,
       collection: "The " + displayCategory + " Collection",
       image: p.featuredImage?.node?.sourceUrl || "/images/placeholder.png", 
-      designer: "Casa Italia", // Default designer
+      designer: "HC Furniture Supply", // Default designer
     };
   });
 

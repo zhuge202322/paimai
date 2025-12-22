@@ -10,11 +10,11 @@ export default function Footer() {
             
             {/* Brand Column */}
             <div className="md:col-span-4">
-              <h2 className="font-serif text-3xl text-white mb-6">CASA ITALIA</h2>
+              <h2 className="font-serif text-3xl text-white mb-6">HC Furniture Supply</h2>
               <p className="font-sans text-sm leading-relaxed max-w-xs mb-8">
                 Curating the finest Italian design since 1985. We believe in the poetry of space and the silent language of objects.
               </p>
-              <p className="text-xs uppercase tracking-widest text-stone-600">© 2024 Casa Italia. All Rights Reserved.</p>
+              <p className="text-xs uppercase tracking-widest text-stone-600">© 2024 HC Furniture Supply. All Rights Reserved.</p>
             </div>
 
             {/* Links Column 1 */}

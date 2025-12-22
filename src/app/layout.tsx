@@ -18,25 +18,25 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.casaitalia.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.hcfurnituresupply.com"),
   title: {
-    default: "CASA ITALIA | Luxury Furniture",
-    template: "%s | CASA ITALIA"
+    default: "HC Furniture Supply | Luxury Furniture",
+    template: "%s | HC Furniture Supply"
   },
   description: "Minimalist Italian Design Furniture. Curated collections of luxury handcrafted pieces.",
-  keywords: ["Italian Furniture", "Luxury Design", "Minimalist Interior", "Milan Atelier", "Casa Italia", "Furniture", "Design"],
-  authors: [{ name: "Casa Italia" }],
+  keywords: ["Italian Furniture", "Luxury Design", "Minimalist Interior", "Milan Atelier", "HC Furniture Supply", "Furniture", "Design"],
+  authors: [{ name: "HC Furniture Supply" }],
   openGraph: {
-    title: "CASA ITALIA | Luxury Furniture",
+    title: "HC Furniture Supply | Luxury Furniture",
     description: "Minimalist Italian Design Furniture",
     url: "/",
-    siteName: "CASA ITALIA",
+    siteName: "HC Furniture Supply",
     images: [
       {
         url: "/images/og-image.jpg", // Ensure this image exists or provide a default
         width: 1200,
         height: 630,
-        alt: "CASA ITALIA",
+        alt: "HC Furniture Supply",
       },
     ],
     locale: "en_US",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CASA ITALIA | Luxury Furniture",
+    title: "HC Furniture Supply | Luxury Furniture",
     description: "Minimalist Italian Design Furniture",
     images: ["/images/og-image.jpg"],
   },

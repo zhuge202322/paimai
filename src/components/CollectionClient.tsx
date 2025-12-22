@@ -45,7 +45,7 @@ export default function CollectionClient({ initialProducts }: CollectionClientPr
 
   // Filter Logic
   const filteredProducts = useMemo(() => {
-    // If we select a designer from the static list, currently it won't match "Casa Italia"
+    // If we select a designer from the static list, currently it won't match "HC Furniture Supply"
     // So for now, we can either ignore designer filter OR just show all products if designer is selected (as a "Collection" view)
     // Let's allow filtering ONLY if the product actually has that designer name.
     if (activeDesigner) {
@@ -196,7 +196,7 @@ export default function CollectionClient({ initialProducts }: CollectionClientPr
       {/* Simple Footer for Collection Page */}
       <footer className="bg-white py-12 border-t border-stone-200">
          <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-stone-500 uppercase tracking-widest">
-            <span>© 2024 Casa Italia</span>
+            <span>© 2024 HC Furniture Supply</span>
             <div className="flex gap-8 mt-4 md:mt-0">
                <a href="#" className="hover:text-stone-900">Instagram</a>
                <a href="#" className="hover:text-stone-900">Contact</a>
