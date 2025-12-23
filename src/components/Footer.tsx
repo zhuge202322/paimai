@@ -44,7 +44,7 @@ export default function Footer() {
             {/* Contact / Social */}
             <div className="md:col-span-3">
               <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-6">Connect</h4>
-              <p className="text-sm mb-8">Global Service Headquarters</p>
+              <p className="text-sm mb-8">Houjie Town, Dongguan City, Guangdong Province, China</p>
               
               <div className="flex gap-4">
                  <div className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-white hover:text-stone-900 transition-all cursor-pointer">INS</div>
