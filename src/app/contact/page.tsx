@@ -36,14 +36,13 @@ export default function ContactPage() {
             transition={{ duration: 1, delay: 0.2 }}
         >
             <div className="mb-16">
-                <h3 className="font-serif text-3xl mb-8">Milan Atelier</h3>
+                <h3 className="font-serif text-3xl mb-8">Global Services</h3>
                 <p className="font-sans text-stone-500 leading-relaxed mb-6 text-lg">
-                    Via Montenapoleone, 12 <br/>
-                    20121 Milano, Italy
+                    HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.
                 </p>
                 <div className="space-y-2">
-                    <a href="mailto:milano@casaitalia.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">mahoch1996@outlook.com</a>
-                    <a href="tel:+390212345678" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">86+15989611582</a>
+                    <a href="mailto:mahoch1996@outlook.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">mahoch1996@outlook.com</a>
+                    <a href="tel:+8615989611582" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">86+15989611582</a>
                 </div>
             </div>
 
