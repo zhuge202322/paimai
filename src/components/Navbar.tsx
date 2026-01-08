@@ -36,7 +36,7 @@ export function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
-  const menuItems = ["Home", "Collection", "About Us", "Contact"];
+  const menuItems = ["Home", "Collection", "Projects", "About Us", "Contact"];
 
   return (
     <>
@@ -84,6 +84,7 @@ export function Navbar() {
         {menuItems.map((item) => {
             const isHome = item === "Home";
             const isCollection = item === "Collection";
+            const isProjects = item === "Projects";
             const isAbout = item === "About Us";
             const isContact = item === "Contact";
             
@@ -105,6 +106,8 @@ export function Navbar() {
                 return <Link key={item} href="/">{Content}</Link>;
             } else if (isCollection) {
                 return <Link key={item} href="/collection">{Content}</Link>;
+            } else if (isProjects) {
+                return <Link key={item} href="/projects">{Content}</Link>;
             } else if (isAbout) {
                 return <Link key={item} href="/about">{Content}</Link>;
             } else if (isContact) {
@@ -157,7 +160,7 @@ export function Navbar() {
             >
                 <div className="flex flex-col gap-8">
                     {menuItems.map((item, i) => {
-                         const href = item === "Home" ? "/" : item === "Collection" ? "/collection" : item === "About Us" ? "/about" : item === "Contact" ? "/contact" : "#";
+                         const href = item === "Home" ? "/" : item === "Collection" ? "/collection" : item === "Projects" ? "/projects" : item === "About Us" ? "/about" : item === "Contact" ? "/contact" : "#";
                          return (
                             <Link key={item} href={href} onClick={() => setIsMobileMenuOpen(false)}>
                                 <motion.div
