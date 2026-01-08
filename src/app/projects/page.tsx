@@ -1,7 +1,8 @@
 import ProjectsClient from "@/components/ProjectsClient";
 import { getPostsByCategory } from "@/lib/api";
 
-export const revalidate = 60; // Revalidate every minute
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ProjectsPage() {
   // Fetch products from the "anli" category (Projects/Case Studies)
