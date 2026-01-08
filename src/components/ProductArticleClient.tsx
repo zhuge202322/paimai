@@ -110,7 +110,14 @@ function ProductContent({ product, relatedProducts }: { product: ProductData, re
                             {/* If we have full content HTML, we could render it here, otherwise keep static text structure or use description */}
                             <div 
                                 className="font-sans text-stone-500 leading-loose text-sm md:text-base max-w-2xl prose prose-stone"
-                                dangerouslySetInnerHTML={{ __html: product.content || "" }} 
+                                dangerouslySetInnerHTML={{ 
+                                    __html: (product.content || "")
+                                        .replace(/srcset=["'][^"']*["']/g, "") // Remove srcset to prevent mixed content
+                                        .replace(/src=["'](http:\/\/[^"']+)["']/g, (match, url) => {
+                                            // Proxy HTTP images via Next.js to avoid Mixed Content error
+                                            return `src="/_next/image?url=${encodeURIComponent(url)}&w=1200&q=75"`;
+                                        })
+                                }} 
                             />
                         </div>
                     </div>
