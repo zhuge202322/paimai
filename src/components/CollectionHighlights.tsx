@@ -139,6 +139,16 @@ export default function CollectionHighlights({ id, products = [] }: { id?: strin
                                    </div>
                                 </div>
 
+                                {/* Mobile Only CTA Button - Positioned Centered Above Image */}
+                                <div className="absolute top-12 left-0 w-full text-center z-30 lg:hidden">
+                                   <button 
+                                     onClick={() => setSelectedProduct(currentProduct)}
+                                     className="border border-stone-900 bg-white/80 backdrop-blur px-8 py-2 text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-white transition-colors shadow-sm"
+                                   >
+                                     查看详情
+                                   </button>
+                                </div>
+
                                 {/* Overlay: Right Collection Info */}
                                 <div className="absolute top-1/2 -translate-y-1/2 -right-12 lg:-right-32 z-10 text-right hidden lg:block pointer-events-none select-none">
                                    <p className="text-[10px] uppercase tracking-[0.3em] text-stone-500 font-bold mb-4">{currentProduct.collection}</p>
@@ -147,11 +157,11 @@ export default function CollectionHighlights({ id, products = [] }: { id?: strin
                                    </h2>
                                 </div>
 
-                                {/* Floating CTA Button */}
-                                <div className="absolute -bottom-24 lg:bottom-8 right-0 lg:right-8 z-20 w-full lg:w-auto text-center lg:text-right">
+                                {/* Floating CTA Button (Desktop Only) */}
+                                <div className="absolute bottom-8 right-8 z-20 hidden lg:block w-auto text-right">
                                    <button 
                                      onClick={() => setSelectedProduct(currentProduct)}
-                                     className="border border-stone-900 bg-white/80 backdrop-blur px-8 py-3 text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-white transition-colors w-full lg:w-auto"
+                                     className="border border-stone-900 bg-white/80 backdrop-blur px-8 py-3 text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-white transition-colors"
                                    >
                                      查看详情
                                    </button>
@@ -199,7 +209,7 @@ export default function CollectionHighlights({ id, products = [] }: { id?: strin
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-[#f2f0ea]"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#f2f0ea]"
                 >
                     <button 
                         onClick={() => setSelectedProduct(null)}
