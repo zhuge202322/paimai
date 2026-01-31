@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || "http://45.145.229.20:2025/graphql";
+const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || "http://45.145.229.20:6124/graphql";
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
   const headers = { 'Content-Type': 'application/json' };
@@ -106,6 +106,7 @@ export async function getPostsByCategory(categoryName: string, count: number = 4
             title
             slug
             excerpt
+            content
             categories {
               edges {
                 node {
@@ -133,6 +134,35 @@ export async function getPostsByCategory(categoryName: string, count: number = 4
     }
   );
   return data?.posts?.edges;
+}
+
+export async function getCertificate(certId: string) {
+  // Try to find by slug (certificate number usually maps to slug)
+  const data = await fetchAPI(
+    `
+    query GetCertificate($slug: String!) {
+      posts(where: { name: $slug, categoryName: "zhengshu" }) {
+        edges {
+          node {
+            title
+            content
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        slug: certId.toLowerCase()
+      }
+    }
+  );
+  return data?.posts?.edges?.[0]?.node;
 }
 
 export async function getVisionaries() {

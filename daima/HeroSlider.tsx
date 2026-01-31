@@ -4,6 +4,18 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+/**
+ * HeroSlider Component
+ * 
+ * A full-screen slider with:
+ * - Cross-fade transitions (AnimatePresence without mode="wait")
+ * - Text animations synchronized with slides
+ * - Progress bar indicators
+ * - Automatic autoplay
+ * 
+ * Requirement: Update slides array with your own images.
+ */
+
 const slides = [
   {
     id: 1,
@@ -65,6 +77,7 @@ export default function HeroSlider() {
             fill
             className="object-cover"
             priority
+            unoptimized // FIX: Bypass optimization to prevent layout shift/flicker
           />
           <div className="absolute inset-0 bg-black/20" />
         </motion.div>

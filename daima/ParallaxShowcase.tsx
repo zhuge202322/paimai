@@ -6,6 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "./Footer";
 
+/**
+ * ParallaxShowcase Component
+ * 
+ * A complex interactive showcase containing multiple "Acts":
+ * 1. Parallax Intro: Image reveal with scroll-driven parallax.
+ * 2. Click Carousel: A custom 3D-like carousel with floating details.
+ * 3. Rhythm Grid: A staggered grid layout for products.
+ * 4. 3D Spiral Gallery: A 3D CSS transform spiral for team/visionaries.
+ * 
+ * Includes `fixUrl` helper for WordPress image URL sanitization.
+ */
+
 function fixUrl(url: string) {
   if (!url) return url;
   if (url.startsWith('/')) {

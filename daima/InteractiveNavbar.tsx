@@ -4,10 +4,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-export function Navbar() {
+/**
+ * InteractiveNavbar Component
+ * 
+ * Features:
+ * - Starts vertical on Homepage, transitions to horizontal.
+ * - Always horizontal on other pages.
+ * - Mobile responsive with hamburger menu.
+ * - Smooth framer-motion layout transitions.
+ */
+export function InteractiveNavbar() {
   const pathname = usePathname();
   const isHomepage = pathname === "/";
   
@@ -18,8 +26,7 @@ export function Navbar() {
   useEffect(() => {
     // Only run the transition timer if we are on the homepage
     if (isHomepage) {
-        // SYNC TIMING: Matches HeroSection delay (0.5s)
-        // The layout animation itself will take 1.5s, perfectly mirroring the gate opening duration
+        // SYNC TIMING: Matches OpeningGate delay (0.5s)
         const timer = setTimeout(() => setIsVertical(false), 500); 
         return () => clearTimeout(timer);
     } else {
@@ -37,28 +44,20 @@ export function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
-  const menuItems = ["公司简介", "领导团队", "馆藏精品", "证书查询", "联系我们"];
+  const menuItems = ["Home", "Collection", "Projects", "About Us", "Contact"];
 
   return (
     <>
       {/* LOGO: Always Top-Left */}
       <motion.div
-        className="fixed top-6 left-6 md:left-12 md:top-8 z-[70]"
+        className="fixed top-6 left-6 md:left-12 md:top-8 z-[70] mix-blend-difference"
         initial={{ opacity: 0, y: isHomepage ? -20 : 0 }} // Only animate y on homepage
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: isHomepage ? 0.5 : 0 }} // Only delay on homepage
       >
-        <Link href="/" className="flex items-center gap-3 md:gap-4">
-            <div className="relative w-10 h-10 md:w-12 md:h-12">
-               <Image 
-                 src="/images/logo.png" 
-                 alt="保利永安" 
-                 fill 
-                 className="object-contain"
-               />
-            </div>
-            <span className="font-serif text-2xl md:text-3xl font-bold tracking-widest text-stone-900 uppercase cursor-pointer">
-            保利永安
+        <Link href="/">
+            <span className="font-serif text-2xl md:text-3xl font-bold tracking-widest text-white uppercase cursor-pointer">
+            HC Furniture Supply
             </span>
         </Link>
       </motion.div>
@@ -111,15 +110,21 @@ export function Navbar() {
                 </motion.div>
             );
 
-            const href = {
-                "公司简介": "/",
-                "领导团队": "/team",
-                "馆藏精品": "/collection",
-                "证书查询": "/certificate",
-                "联系我们": "#contact"
-            }[item] || "#";
+            if (isHome) {
+                return <Link key={item} href="/">{Content}</Link>;
+            } else if (isCollection) {
+                return <Link key={item} href="/collection">{Content}</Link>;
+            } else if (isProjects) {
+                return <Link key={item} href="/projects">{Content}</Link>;
+            } else if (isAbout) {
+                return <Link key={item} href="/about">{Content}</Link>;
+            } else if (isContact) {
+                return <Link key={item} href="/contact">{Content}</Link>;
+            }
 
-            return <Link key={item} href={href}>{Content}</Link>;
+            return (
+                <div key={item}>{Content}</div>
+            );
         })}
       </motion.nav>
 
@@ -163,14 +168,7 @@ export function Navbar() {
             >
                 <div className="flex flex-col gap-8">
                     {menuItems.map((item, i) => {
-                         const href = {
-                            "公司简介": "/",
-                            "领导团队": "/team",
-                            "馆藏精品": "/collection",
-                            "证书查询": "/certificate",
-                            "联系我们": "#contact"
-                        }[item] || "#";
-                        
+                         const href = item === "Home" ? "/" : item === "Collection" ? "/collection" : item === "Projects" ? "/projects" : item === "About Us" ? "/about" : item === "Contact" ? "/contact" : "#";
                          return (
                             <Link key={item} href={href} onClick={() => setIsMobileMenuOpen(false)}>
                                 <motion.div
@@ -200,4 +198,3 @@ export function Navbar() {
     </>
   );
 }
-

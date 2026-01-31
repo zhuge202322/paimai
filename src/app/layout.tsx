@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -65,7 +65,7 @@ export default function RootLayout({
       ><Navbar />
         
         {children}
-        <WhatsAppButton />
+        <Footer />
       </body>
     </html>
   );
