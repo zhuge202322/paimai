@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useMemo } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useMemo } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 // Helper for image URLs
 function fixUrl(url: string) {
@@ -15,103 +14,163 @@ function fixUrl(url: string) {
 }
 
 export default function LeadershipTeam({ id, visionaries = [] }: { id?: string, visionaries?: any[] }) {
-  const teamRef = useRef<HTMLElement>(null);
   
-  // Process Visionaries Data
-  const designers = useMemo(() => {
+  // Process Data
+  const { founder, coreTeam } = useMemo(() => {
+    let allMembers = [];
     if (!visionaries || visionaries.length === 0) {
-       // Fallback static data for demo
-       return [
-          { id: 1, name: "阮永虎", title: "董事长", image: "/images/renwu/001.png" },
-          { id: 2, name: "吴戴基", title: "副董事长", image: "/images/renwu/002.png" },
-          { id: 3, name: "刘志远", title: "股东", image: "/images/renwu/003.png" },
-          { id: 4, name: "应金鸿", title: "总经理", image: "/images/renwu/004.png" },
-          { id: 5, name: "马保平", title: "公司顾问", image: "/images/renwu/005.png" },
+       // Fallback static data
+       allMembers = [
+          { 
+              id: 1, 
+              name: "阮永虎", 
+              title: "董事长 / Chairman", 
+              image: "/images/renwu/001.png",
+              description: [
+                  "阮永虎，1965年3月出生于中国安徽省合肥市。自幼聪慧勤学，对中华传统文化和艺术表现出浓厚兴趣。1979年，14岁的阮永虎怀揣对古代书画的热爱，前往北京，开始在故宫博物院深造，师从著名文物鉴定专家杨新教授。长达八年的沉浸式学习与实践，使他具备了独特的艺术品鉴与策划能力。",
+                  "1997年10月，阮永虎与马保平、李楠等文化界同仁携手，共同创办中国保利文化艺术品有限公司，即为今日中国保利文化集团的前身。深度参与了诸多重大文化项目的策划与执行，包括举世瞩目的“圆明园十二生肖兽首回归”行动。",
+                  "2004年，阮永虎赴澳门创办保利永安旅游投资有限公司，拓展文化与旅游产业的融合之路。公司自成立以来，致力于打造具有国际视野的综合性文化投资平台。"
+              ]
+          },
+          { 
+              id: 2, 
+              name: "吴戴基", 
+              title: "副董事长", 
+              image: "/images/renwu/002.png",
+              description: "资深文化产业投资人，拥有丰富的跨国企业管理经验。致力于推动中国传统文化的国际化传播与商业化运作。"
+          },
+          { 
+              id: 3, 
+              name: "刘志远", 
+              title: "股东", 
+              image: "/images/renwu/003.png",
+              description: "著名艺术品收藏家，对明清瓷器有极深的研究。多次参与国内外大型拍卖会，为集团引进了众多国宝级藏品。"
+          },
+          { 
+              id: 4, 
+              name: "应金鸿", 
+              title: "总经理", 
+              image: "/images/renwu/004.png",
+              description: "拥有二十余年旅游与酒店管理经验，主持了保利永安旗下多个文化旅游项目的开发与运营，擅长将文化资源转化为旅游体验。"
+          },
+          { 
+              id: 5, 
+              name: "马保平", 
+              title: "公司顾问", 
+              image: "/images/renwu/005.png",
+              description: "文化界资深专家，曾任职于多个国家级文化机构。为集团的发展战略提供宏观指导与学术支持。"
+          },
        ];
+    } else {
+        // Map API data
+        allMembers = visionaries.map((item: any, index: number) => ({
+            id: index + 1,
+            name: item.name,
+            title: item.title,
+            image: fixUrl(item.image?.node?.sourceUrl) || "/images/renwu/001.png",
+            description: item.description || "暂无简介" // Assuming API has description or we handle it
+        }));
     }
-    return visionaries.map((item: any, index: number) => ({
-        id: index + 1,
-        name: item.name,
-        title: item.title,
-        image: fixUrl(item.image?.node?.sourceUrl) || "/images/renwu/001.png"
-    }));
+
+    return {
+        founder: allMembers[0],
+        coreTeam: allMembers.slice(1)
+    };
   }, [visionaries]);
 
-  // Team Section Parallax (Spiral Staircase Logic)
-  const { scrollYProgress: teamScroll } = useScroll({
-    target: teamRef,
-    offset: ["start start", "end end"]
-  });
-  
-  // Calculate dynamic target values based on item count
-  // We want the LAST item to end up at rotation 0 (facing front) and centered
-  const itemCount = designers.length;
-  const lastIndex = Math.max(0, itemCount - 1);
-  const targetRotate = -(lastIndex * 45);
-  const targetY = -(lastIndex * 250);
-
-  // Animate from 0 to 85% of scroll, then hold for the last 15%
-  // This ensures the last image stays in front for a moment before scrolling away
-  const spiralRotate = useTransform(teamScroll, [0, 0.85, 1], [0, targetRotate, targetRotate]);
-  const spiralY = useTransform(teamScroll, [0, 0.85, 1], ["0px", `${targetY}px`, `${targetY}px`]);
-
   return (
-      <section id={id} ref={teamRef} className="relative h-[400vh] bg-[#f8f8f6]">
-         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center perspective-1000">
+      <section id={id} className="bg-[#fbf9f6] py-24 md:py-32">
+         <div className="container mx-auto px-6">
             
-            <div className="absolute top-12 md:top-24 z-20 text-center w-full px-6">
-                <h2 className="font-serif text-5xl md:text-6xl text-stone-900 mb-4">领导团队</h2>
-                <p className="font-sans text-stone-500 max-w-lg mx-auto">
-                   汇聚行业顶尖专家，为您提供专业的艺术品鉴定与评估服务。
-                </p>
+            {/* Page Header */}
+            <div className="text-center mb-24">
+                <div className="flex items-center justify-center gap-4 mb-4">
+                    <span className="text-[10px] tracking-[0.2em] text-[#8b4513] uppercase border-b border-[#8b4513]/30 pb-1">Leadership Team</span>
+                    <h2 className="font-serif text-4xl md:text-5xl text-stone-900 tracking-wide">领 导 团 队</h2>
+                </div>
+                <p className="text-stone-500 font-light text-sm tracking-widest">以远见卓识，引领文化传承与创新。</p>
             </div>
 
-            {/* 3D Scene Container */}
-            <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: "1500px" }}>
-               <motion.div 
-                 style={{ 
-                    rotateY: spiralRotate, 
-                    y: spiralY,
-                    transformStyle: "preserve-3d" // Critical for 3D children
-                 }}
-                 className="relative w-full h-full"
-               >
-                 {designers.map((designer, index) => {
-                    // Calculate position for each step of the spiral
-                    const angle = index * 45; // 360 / 8 designers = 45 degrees per step
-                    const yOffset = index * 250; // Vertical distance between steps
-                    const radius = 500; // Radius of the spiral
+            {/* 1. Founder Section */}
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start mb-32 max-w-6xl mx-auto">
+                {/* Founder Image */}
+                <motion.div 
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full lg:w-1/2 relative aspect-[3/4] shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white p-4 rotate-1"
+                >
+                    <div className="relative w-full h-full overflow-hidden">
+                        <Image 
+                            src={founder.image} 
+                            alt={founder.name} 
+                            fill 
+                            className="object-cover" 
+                        />
+                    </div>
+                </motion.div>
 
-                    return (
-                       <div 
-                         key={designer.id}
-                         className="absolute top-1/2 left-1/2 w-[300px] md:w-[400px] aspect-[3/4] -ml-[150px] md:-ml-[200px] -mt-[200px]"
-                         style={{
-                            transform: `translateY(${yOffset}px) rotateY(${angle}deg) translateZ(${radius}px)`,
-                            backfaceVisibility: "hidden" // Optional: hide back face for performance
-                         }}
-                       >
-                          <div className="block w-full h-full cursor-pointer">
-                            <div className="relative w-full h-full bg-white p-4 shadow-2xl border border-stone-100 transform transition-transform hover:scale-105 duration-500">
-                               <div className="relative w-full h-[85%] overflow-hidden bg-stone-100">
-                                  <Image 
-                                    src={designer.image} 
-                                    alt={designer.name} 
-                                    fill 
-                                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-                                  />
-                               </div>
-                               <div className="pt-4 text-center">
-                                  <h4 className="font-serif text-xl text-stone-900">{designer.name}</h4>
-                                  <p className="text-[10px] tracking-widest uppercase text-stone-500 mt-1">{designer.title}</p>
-                               </div>
-                            </div>
-                          </div>
-                       </div>
-                    );
-                 })}
-               </motion.div>
+                {/* Founder Info */}
+                <motion.div 
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full lg:w-1/2 pt-8"
+                >
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-8 h-[1px] bg-[#8b4513]" />
+                        <span className="text-[#8b4513] text-xs font-bold tracking-[0.2em] uppercase">创始人 · Founder</span>
+                    </div>
+                    
+                    <h3 className="font-serif text-4xl text-stone-900 mb-2">{founder.name}</h3>
+                    <p className="text-[#8b4513] text-sm uppercase tracking-widest mb-10">{founder.title}</p>
+                    
+                    <div className="space-y-6 text-stone-600 leading-relaxed text-justify text-sm md:text-base font-light">
+                        {Array.isArray(founder.description) ? (
+                            founder.description.map((para: string, i: number) => <p key={i}>{para}</p>)
+                        ) : (
+                            <p>{founder.description}</p>
+                        )}
+                    </div>
+                </motion.div>
             </div>
+
+            {/* 2. Core Team Section */}
+            <div className="mb-16 text-center">
+                 <span className="text-[10px] tracking-[0.2em] text-[#8b4513] uppercase block mb-2">Core Team</span>
+                 <h3 className="font-serif text-3xl text-stone-900">核心管理团队</h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                {coreTeam.map((member: any, idx: number) => (
+                    <motion.div
+                        key={member.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.1, duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="bg-white p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 text-center group"
+                    >
+                        <div className="relative w-full aspect-[3/4] mb-6 overflow-hidden bg-stone-100">
+                             <Image 
+                                src={member.image} 
+                                alt={member.name} 
+                                fill 
+                                className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" 
+                             />
+                        </div>
+                        <h4 className="font-serif text-xl text-stone-900 mb-1">{member.name}</h4>
+                        <p className="text-[#8b4513] text-[10px] uppercase tracking-widest mb-4">{member.title}</p>
+                        <div className="w-8 h-[1px] bg-stone-200 mx-auto mb-4" />
+                        <p className="text-stone-500 text-xs leading-relaxed text-justify opacity-80 line-clamp-4">
+                            {member.description}
+                        </p>
+                    </motion.div>
+                ))}
+            </div>
+
          </div>
       </section>
   );

@@ -11,22 +11,7 @@ export function Navbar() {
   const pathname = usePathname();
   const isHomepage = pathname === "/";
   
-  // Only start vertical on homepage, otherwise start horizontal immediately
-  const [isVertical, setIsVertical] = useState(isHomepage);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Only run the transition timer if we are on the homepage
-    if (isHomepage) {
-        // SYNC TIMING: Matches HeroSection delay (0.5s)
-        // The layout animation itself will take 1.5s, perfectly mirroring the gate opening duration
-        const timer = setTimeout(() => setIsVertical(false), 500); 
-        return () => clearTimeout(timer);
-    } else {
-        // Force horizontal on other pages (just in case)
-        setIsVertical(false);
-    }
-  }, [isHomepage]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -37,16 +22,16 @@ export function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
-  const menuItems = ["公司简介", "领导团队", "馆藏精品", "证书查询", "联系我们"];
+  const menuItems = ["首页", "公司简介", "领导团队", "馆藏精品", "证书查询", "联系我们"];
 
   return (
     <>
       {/* LOGO: Always Top-Left */}
       <motion.div
         className="fixed top-6 left-6 md:left-12 md:top-8 z-[70]"
-        initial={{ opacity: 0, y: isHomepage ? -20 : 0 }} // Only animate y on homepage
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: isHomepage ? 0.5 : 0 }} // Only delay on homepage
+        transition={{ duration: 1 }}
       >
         <Link href="/" className="flex items-center gap-3 md:gap-4">
             <div className="relative w-10 h-10 md:w-12 md:h-12">
@@ -57,7 +42,7 @@ export function Navbar() {
                  className="object-contain"
                />
             </div>
-            <span className="font-serif text-2xl md:text-3xl font-bold tracking-widest text-stone-900 uppercase cursor-pointer">
+            <span className="font-serif text-2xl md:text-3xl font-bold tracking-widest text-white mix-blend-difference uppercase cursor-pointer">
             保利永安
             </span>
         </Link>
@@ -70,53 +55,33 @@ export function Navbar() {
         ===========================================
       */}
       <motion.nav
-        layout
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        className={clsx(
-            "fixed z-[60] hidden lg:flex gap-4 md:gap-8",
-            isVertical 
-                ? "flex-col items-end right-8 top-1/2 -translate-y-1/2" // Vertical: Right center
-                : "flex-row items-center lg:top-6 left-0 right-0 mx-auto w-fit px-10 py-4" // Horizontal: Adjusted top alignment
-        )}
+        className="fixed z-[60] hidden lg:flex gap-4 md:gap-8 flex-row items-center lg:top-6 left-0 right-0 mx-auto w-fit px-10 py-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
       >
         {/* Horizontal Background Pill */}
-        {!isVertical && (
-            <motion.div 
-                layoutId="navbar-pill"
-                className="absolute inset-0 bg-black/30 backdrop-blur-md border border-white/10 rounded-full shadow-lg -z-10"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
-            />
-        )}
+        <motion.div 
+            layoutId="navbar-pill"
+            className="absolute inset-0 bg-black/30 backdrop-blur-md border border-white/10 rounded-full shadow-lg -z-10"
+        />
 
         {menuItems.map((item) => {
-            const isHome = item === "Home";
-            const isCollection = item === "Collection";
-            const isProjects = item === "Projects";
-            const isAbout = item === "About Us";
-            const isContact = item === "Contact";
-            
             const Content = (
                 <motion.div
-                    layout
-                    className={clsx(
-                    "uppercase tracking-widest text-[10px] md:text-xs font-bold cursor-pointer text-center whitespace-nowrap",
-                    isVertical
-                        ? "bg-black/30 text-white px-6 py-3 rounded-full hover:bg-black/50 w-auto text-right min-w-[120px] backdrop-blur-md border border-white/10"
-                        : "bg-transparent text-white"
-                    )}
+                    className="uppercase tracking-widest text-[10px] md:text-xs font-bold cursor-pointer text-center whitespace-nowrap bg-transparent text-white hover:text-stone-200 transition-colors"
                 >
                     {item}
                 </motion.div>
             );
 
             const href = {
-                "公司简介": "/",
+                "首页": "/",
+                "公司简介": "/about",
                 "领导团队": "/team",
                 "馆藏精品": "/collection",
                 "证书查询": "/certificate",
-                "联系我们": "#contact"
+                "联系我们": "/contact"
             }[item] || "#";
 
             return <Link key={item} href={href}>{Content}</Link>;
@@ -164,11 +129,12 @@ export function Navbar() {
                 <div className="flex flex-col gap-8">
                     {menuItems.map((item, i) => {
                          const href = {
-                            "公司简介": "/",
+                            "首页": "/",
+                            "公司简介": "/about",
                             "领导团队": "/team",
                             "馆藏精品": "/collection",
                             "证书查询": "/certificate",
-                            "联系我们": "#contact"
+                            "联系我们": "/contact"
                         }[item] || "#";
                         
                          return (
