@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || "http://45.145.229.20:6124/graphql";
+const API_URL = typeof window === 'undefined'
+  ? (process.env.NEXT_PUBLIC_WORDPRESS_API_URL || "http://45.145.229.20:6124/graphql")
+  : "/graphql";
 
 async function fetchAPI(query: string, { variables }: { variables?: any } = {}) {
   const headers = { 'Content-Type': 'application/json' };

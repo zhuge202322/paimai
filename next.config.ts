@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/graphql',
+        destination: 'http://45.145.229.20:6124/graphql',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
