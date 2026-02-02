@@ -72,42 +72,42 @@ export default function CompanyProfile({ id }: { id?: string }) {
           </motion.div>
         </div>
 
-        {/* Founder Intro */}
-        <div className="border-t border-stone-200 pt-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-4">
-                     <div className="relative aspect-[3/4] bg-stone-200 grayscale">
-                        <Image 
-                           src="/images/renwu/001.png" 
-                           alt="阮永虎" 
-                           fill 
-                           className="object-cover"
-                        />
-                        <div className="absolute bottom-0 left-0 bg-stone-900 text-white p-4">
-                            <h3 className="text-xl font-serif">阮永虎</h3>
-                            <p className="text-xs uppercase tracking-widest opacity-70">公司创始人</p>
-                        </div>
-                     </div>
+        {/* Group Business Segments */}
+        <div className="border-t border-stone-200 pt-16 mt-16">
+            <h2 className="font-serif text-3xl text-stone-900 mb-12 text-center">集团业务板块</h2>
+            <div className="w-12 h-0.5 bg-stone-900 mx-auto -mt-8 mb-12" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Card 1: Museum */}
+                <div className="bg-[#fcf8f6] p-8 flex flex-col items-center hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-serif text-xl text-stone-800 mb-6">博物馆</h3>
+                    <p className="text-stone-600 text-sm leading-relaxed text-justify">
+                        保利博物馆是展示中国文化与艺术的重要机构，收藏丰富的古代与现代艺术作品。我们定期举办展览和活动，欢迎您来探索艺术的魅力。
+                    </p>
                 </div>
-                <div className="lg:col-span-8">
-                    <h2 className="font-serif text-3xl text-stone-900 mb-6">创始人致辞</h2>
-                    <div className="space-y-4 text-stone-600 leading-relaxed text-sm md:text-base text-justify columns-1 md:columns-2 gap-8">
-                        <p>
-                            阮永虎，男，1965年3月出生于中国安徽省合肥市。自幼聪慧勤学，对中华传统文化和艺术表现出浓厚兴趣。1979年，14岁的阮永虎怀揣对古代书画的热爱，前往北京，开始在故宫博物院深造，系统学习古代书画的鉴定与研究工作。他有幸师从著名文物鉴定专家、时任故宫博物院副院长、博士生导师杨新教授，深得其真传。
-                        </p>
-                        <p>
-                            1987年底，阮永虎南下深圳，加入振兴实业有限公司，开始将所学专业知识应用于文化产业实践。他在企业发展过程中逐步积累了丰富的管理经验和市场洞察力，为其日后创业打下了坚实的商业基础。
-                        </p>
-                        <p>
-                            1997年10月，阮永虎与马保平、李楠等文化界同仁携手，在国家文化产业发展的大背景下，共同创办中国保利文化艺术品有限公司，开启了中国艺术品市场化运作的新篇章。该公司即为今日中国保利文化集团的前身。作为创始成员之一，阮永虎先生深度参与了诸多重大文化项目的策划与执行，包括举世瞩目的“圆明园十二生肖兽首回归”行动，彰显了强烈的文化使命感与家国情怀。
-                        </p>
-                        <p>
-                            2004年，阮永虎赴澳门创办保利永安旅游投资有限公司，拓展文化与旅游产业的融合之路。公司自成立以来，持续推动中西文化交流与艺术品资源整合，积极参与文物资产化、文化金融及跨境文旅项目的开发，致力于打造具有国际视野的综合性文化投资平台。
-                        </p>
-                        <p>
-                            历经数十年耕耘，阮永虎始终秉持“传承中华文明、弘扬民族文化”的初心，身体力行地推进中国艺术品市场的健康发展，为中华文化走向世界做出了卓越贡献。
-                        </p>
-                    </div>
+
+                {/* Card 2: Auction */}
+                <div className="bg-[#fcf8f6] p-8 flex flex-col items-center hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-serif text-xl text-stone-800 mb-6">拍卖</h3>
+                    <p className="text-stone-600 text-sm leading-relaxed text-justify">
+                        保利拍卖致力于为艺术品收藏者和投资者提供优质的拍卖服务。我们汇聚了丰富艺术资源，定期举办各类主题拍卖，展示全球顶尖艺术家的杰作，旨在为您开启艺术投资的新视野。
+                    </p>
+                </div>
+
+                {/* Card 3: International Exhibition */}
+                <div className="bg-[#fcf8f6] p-8 flex flex-col items-center hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-serif text-xl text-stone-800 mb-6">国际展览</h3>
+                    <p className="text-stone-600 text-sm leading-relaxed text-justify">
+                        保利国际展览致力于为企业提供卓越的展览服务与解决方案。我们通过创新的展览设计和专业的团队，帮助客户在全球市场中脱颖而出。欢迎参与我们的展会，共同推动发展。
+                    </p>
+                </div>
+
+                {/* Card 4: Digital Art Finance */}
+                <div className="bg-[#fcf8f6] p-8 flex flex-col items-center hover:shadow-lg transition-all duration-300">
+                    <h3 className="font-serif text-xl text-stone-800 mb-6">数字艺术金融</h3>
+                    <p className="text-stone-600 text-sm leading-relaxed text-justify">
+                        艺术数字金融是将艺术与金融结合的创新领域，利用数字技术为艺术品交易和投资提供新的可能性。它不仅为艺术家和收藏家创造了更多的机会，也为投资者带来了独特的资产选择。
+                    </p>
                 </div>
             </div>
         </div>

@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
         source: '/graphql',
         destination: 'http://45.145.229.20:6124/graphql',
       },
+      {
+        source: '/wp-content/:path*',
+        destination: 'http://45.145.229.20:6124/wp-content/:path*',
+      },
     ];
   },
 };

@@ -7,8 +7,13 @@ import { getCertificate } from "@/lib/api";
 
 function fixUrl(url: string) {
   if (!url) return url;
+  // If it starts with '/', return as is (relative), allowing Next.js proxy to handle it.
   if (url.startsWith('/')) {
-    return `http://45.145.229.20:6124${url}`;
+    return url;
+  }
+  // If it's the specific backend IP, make it relative to use the proxy
+  if (url.includes('45.145.229.20:6124')) {
+    return url.replace('http://45.145.229.20:6124', '');
   }
   return url.replace(':2025', ':6124');
 }
@@ -19,6 +24,11 @@ export default function CertificateQuery({ id }: { id?: string }) {
   const [result, setResult] = useState<null | string>(null);
   const [loading, setLoading] = useState(false);
   const [certificateData, setCertificateData] = useState<any>(null);
+
+  // Process content to fix image URLs (make them relative so they go through proxy)
+  const processedContent = certificateData?.content 
+    ? certificateData.content.replace(/http:\/\/45\.145\.229\.20:6124/g, '') 
+    : "";
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +79,7 @@ export default function CertificateQuery({ id }: { id?: string }) {
         >
           <input 
             type="text" 
-            placeholder="请输入证书编号 (例如: CERT001)" 
+            placeholder="请输入证书编号" 
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full bg-white border border-stone-200 text-stone-900 px-6 py-4 outline-none focus:border-stone-900 focus:ring-1 focus:ring-stone-900 transition-all text-lg placeholder:text-stone-400"
@@ -154,7 +164,7 @@ export default function CertificateQuery({ id }: { id?: string }) {
                   
                   <div 
                     className="prose prose-stone prose-lg text-stone-600 font-light leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: certificateData.content }} 
+                    dangerouslySetInnerHTML={{ __html: processedContent }} 
                   />
                 </motion.div>
               </div>

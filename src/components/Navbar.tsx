@@ -42,9 +42,6 @@ export function Navbar() {
                  className="object-contain"
                />
             </div>
-            <span className="font-serif text-2xl md:text-3xl font-bold tracking-widest text-white mix-blend-difference uppercase cursor-pointer">
-            保利永安
-            </span>
         </Link>
       </motion.div>
 

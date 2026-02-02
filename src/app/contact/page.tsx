@@ -40,7 +40,7 @@ export default function ContactPage() {
                 </p>
                 <div className="space-y-2">
                     <a href="mailto:info@polyforeverwell.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">info@polyforeverwell.com</a>
-                    <a href="tel:+8615118806827" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">（+86）15118806827</a>
+                    <a href="tel:+85368685946" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">（+853）68685946</a>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </p>
                 <div className="space-y-2">
                     <a href="mailto:info@polyforeverwell.com" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">info@polyforeverwell.com</a>
-                    <a href="tel:+8615118806827" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">（+86）15118806827</a>
+                    <a href="tel:+85368685946" className="block text-stone-900 hover:text-stone-500 transition-colors border-b border-stone-300 pb-1 w-fit">（+853）68685946</a>
                 </div>
             </div>
         </motion.div>

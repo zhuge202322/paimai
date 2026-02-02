@@ -139,11 +139,11 @@ export async function getPostsByCategory(categoryName: string, count: number = 4
 }
 
 export async function getCertificate(certId: string) {
-  // Try to find by slug (certificate number usually maps to slug)
+  // Try to find by tag (certificate number is stored as a tag)
   const data = await fetchAPI(
     `
-    query GetCertificate($slug: String!) {
-      posts(where: { name: $slug, categoryName: "zhengshu" }) {
+    query GetCertificate($tag: String!) {
+      posts(where: { tag: $tag, categoryName: "zhengshu" }) {
         edges {
           node {
             title
@@ -160,7 +160,7 @@ export async function getCertificate(certId: string) {
   `,
     {
       variables: {
-        slug: certId.toLowerCase()
+        tag: certId.toLowerCase()
       }
     }
   );

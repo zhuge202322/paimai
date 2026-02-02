@@ -45,7 +45,7 @@ export default function Footer() {
               <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-6">联系方式</h4>
               <div className="space-y-4 text-sm font-sans mb-8">
                   <p>地址：中国澳门特别行政区北京街174号广发商业中心4楼A座</p>
-                  <p>电话：（+86）15118806827</p>
+                  <p>电话：（+853）68685946</p>
                   <p>邮箱：info@polyforeverwell.com</p>
               </div>
             </div>

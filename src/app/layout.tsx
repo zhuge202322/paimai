@@ -18,38 +18,40 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.hcfurnituresupply.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.polyforeverwell.com"),
   title: {
-    default: "HC Furniture Supply | Luxury Hotel, Office & Luxury Residential Project Furniture Expert",
-    template: "%s | HC Furniture Supply"
+    default: "POLY FOREVERWELL 保利永安",
+    template: "%s | POLY FOREVERWELL 保利永安"
   },
-  description: "HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.",
-  keywords: ["Custom Furniture", "Luxury Hotel Furniture", "Modern Office Furniture", "Residential Projects", "HC Furniture Supply", "China Furniture Supply", "Global Supply Chain"],
-  authors: [{ name: "HC Furniture Supply" }],
+  description: "POLY FOREVERWELL TOURS AND INVESTMENT COMPANY LIMITED. 致力于在文化旅游投资领域中开拓创新，成为行业的引领者。传承中华文明，弘扬民族文化。",
+  keywords: ["Art Auction", "Museum Exhibition", "Cultural Investment", "Poly Foreverwell", "保利永安", "艺术拍卖", "博物馆", "文旅投资"],
+  authors: [{ name: "Poly Foreverwell" }],
   openGraph: {
-    title: "HC Furniture Supply | Luxury Hotel, Office & Luxury Residential Project Furniture Expert",
-    description: "HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.",
+    title: "POLY FOREVERWELL 保利永安",
+    description: "致力于在文化旅游投资领域中开拓创新，成为行业的引领者。",
     url: "/",
-    siteName: "HC Furniture Supply",
+    siteName: "POLY FOREVERWELL 保利永安",
     images: [
       {
-        url: "/images/og-image.jpg", // Ensure this image exists or provide a default
-        width: 1200,
-        height: 630,
-        alt: "HC Furniture Supply",
+        url: "/images/logo.png",
+        width: 800,
+        height: 600,
+        alt: "POLY FOREVERWELL 保利永安",
       },
     ],
-    locale: "en_US",
+    locale: "zh_CN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HC Furniture Supply | Luxury Hotel, Office & Luxury Residential Project Furniture Expert",
-    description: "HC Furniture Supply provides professional custom furniture solutions for Luxury Hotels, Modern Offices, and Luxury Residential projects. Global supply chain expert based in China.",
-    images: ["/images/og-image.jpg"],
+    title: "POLY FOREVERWELL 保利永安",
+    description: "致力于在文化旅游投资领域中开拓创新，成为行业的引领者。",
+    images: ["/images/logo.png"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
   },
 };
 
